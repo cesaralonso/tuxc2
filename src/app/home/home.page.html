@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ accion }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="map_canvas">
+    
+    <ion-button shape="round" (click)="sendNotification()">sendNotification</ion-button>
+    <ion-button shape="round" *ngIf="!elegirDestino" (click)="onPedir()">Solicitar viaje</ion-button>
+    <ion-button shape="round" color="medium" *ngIf="!elegirDestino" (click)="onLocalizar()">Localízame!</ion-button>
+    <ion-button shape="round" *ngIf="elegirDestino && destinoElegido" (click)="onDestinoSeleccionado()">Pedir carro ahora!</ion-button>
+    <ion-button shape="round" color="medium" *ngIf="elegirDestino && destinoElegido" (click)="onComenzar()">Comenzar con origen</ion-button>
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="elegirDestino && estado !== 'HaciaOrigen'">
+
+  <ion-list>
+    <!-- Item Inset Lines -->
+    <ion-item>
+      Origen:
+    </ion-item>
+    <ion-item lines="inset">
+      <ion-label>{{_strAddressOrigen}}</ion-label>
+    </ion-item>
+
+    <!-- Item Full Lines -->
+    <ion-item *ngIf="destinoElegido">
+      <p>Destino: </p>
+    </ion-item>
+    <ion-item lines="inset" *ngIf="destinoElegido">
+      <ion-label>{{_strAddressDestino}}</ion-label>
+    </ion-item>
+  </ion-list>
+  
+  <ion-toolbar *ngIf="!destinoElegido">
+    <ion-title>
+      <ion-input type="text" ion-input placeholder="Dirección destino.." #address></ion-input>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button shape="round" (click)="onBuscarDestino($event)">
+        Buscar
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-footer>

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Detalle de Viaje
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Conductor
+      </ion-label>
+    </ion-item>
+    <ion-item color="secondary">
+      <ion-avatar slot="start">
+        <ion-icon name="contact"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        {{chofer.nombre}}
+      </ion-label>
+      <p>
+        {{chofer.telefono}}
+      </p>
+    </ion-item>
+
+    <ion-item color="primary">
+      <ion-avatar slot="start">
+        <ion-icon name="car" size="5"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        {{carro.marca}}
+      </ion-label>
+      <p>
+        {{carro.anio}}
+      </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Origen
+      </ion-label>
+    </ion-item>
+    <ion-item lines="inset">
+      <ion-label>
+        {{strAddressOrigen}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Destino
+      </ion-label>
+    </ion-item>
+    <ion-item lines="inset">
+      <ion-label>
+        {{strAddressDestino}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button color="primary" expand="full" shape="round" (click)="onIniciarViaje()">Iniciar Viaje</ion-button>
+  <ion-button color="success" expand="full" shape="round" (click)="onCobrar()">Finalizar / Cobrar</ion-button>
+  <ion-button  color="danger"  expand="full" shape="round" (click)="onCancelar()">Cancelar / Rechazar</ion-button>
+</ion-content>
